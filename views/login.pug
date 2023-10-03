@@ -1,0 +1,19 @@
+extends base
+
+block content
+  .login-container
+    img(src="images/indian-emblem.png", alt="Government Logo")
+    h2 Government Login
+    form.form
+      .form-group
+        label(for="Email") Email:
+        input(type="text", id="email", name="Email", required)
+      .form-group
+        label(for="password") Password:
+        input(type="password", id="password", name="password", required)
+      .form-group
+        button(type="submit") Log In
+    
+    
+
+//- //i will check if we can do the login functionality using the action and method post in the form 

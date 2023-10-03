@@ -1,0 +1,33 @@
+extends base
+block content
+  .profile-container
+    .proin-header
+      h1.primary-heading PIB Officer Login
+      h2.secondary-heading= `Department: ${user.department}`
+    
+    .news-columns
+      .positive-news-column
+        h3 Favorable News:
+        ul.news-list
+          each article in positiveNews
+            li.news-item.positive-news
+              h2.news-title= article.title
+              p.news-content= article.content
+              a.news-link(href=article.website_link target="blank") Read More
+      .neutral-news-column
+        h3 Neutral News:
+        ul.news-list
+          each article in neutralNews
+            li.news-item.neutral-news
+              h2.news-title= article.title
+              p.news-content= article.content
+              a.news-link(href=article.website_link target="blank") Read More
+
+      .negative-news-column
+        h3 Non Favorable News:
+        ul.news-list
+          each article in negativeNews
+            li.news-item.negative-news
+              h2.news-title= article.title
+              p.news-content= article.content
+              a.news-link(href=article.website_link target="blank") Read More

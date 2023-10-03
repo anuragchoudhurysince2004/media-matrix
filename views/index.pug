@@ -1,0 +1,20 @@
+extends base
+
+block content
+  section.hero-section 
+    .hero 
+      .hero-text-box
+        p.hero-primary-heading Your Gateway to Media Analysis.
+        p.hero-secondary-heading Discover, Analyze,
+        p.hero-tertiary-heading Act with Media Matrix.
+      .hero-img 
+        img(src="/images/hero-img.png" class='img-hero')
+  .dashboard-container
+    p.primary-heading Live-News:Dashboard
+    p.tertiary-heading Real-Time Media Monitoring: Stay Informed, Stay Ahead
+    ul.news-list
+      each article in articles
+        li.news-item
+          h2.news-title= article.title
+          p.news-content= article.content
+          a.news-link(href=`${article.website_link}` target='blank') Read More

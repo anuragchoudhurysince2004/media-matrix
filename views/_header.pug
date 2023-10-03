@@ -1,0 +1,50 @@
+header.header
+    nav.nav.container.nav-grid
+        .logo-img 
+            img.img.img-logo(src="images/download (1).png")
+            img.img.img-emblem(src="images/indian-emblem.png")
+        .social-handles
+            <a href="tel:8927412726" target="blank"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="60" height="60" viewBox="0 0 48 48">
+            <path d="M 13.5 6 C 9.3754991 6 6 9.3754991 6 13.5 L 6 34.5 C 6 38.624501 9.3754991 42 13.5 42 L 19.851562 42 A 1.50015 1.50015 0 1 0 19.851562 39 L 13.5 39 C 10.996501 39 9 37.003499 9 34.5 L 9 13.5 C 9 10.996501 10.996501 9 13.5 9 L 26.318359 9 A 1.50015 1.50015 0 1 0 26.318359 6 L 13.5 6 z M 32.148438 6 A 1.50015 1.50015 0 1 0 32.148438 9 L 34.5 9 C 37.003499 9 39 10.996501 39 13.5 L 39 34.5 C 39 37.003499 37.003499 39 34.5 39 L 25.765625 39 A 1.50015 1.50015 0 1 0 25.765625 42 L 34.5 42 C 38.624501 42 42 38.624501 42 34.5 L 42 13.5 C 42 9.3754991 38.624501 6 34.5 6 L 32.148438 6 z M 17.972656 13.919922 C 15.096656 13.795922 13.931641 16.023875 13.931641 16.671875 C 13.931641 17.120875 13.318344 22.513656 19.402344 28.597656 C 25.486344 34.681656 30.880125 34.068359 31.328125 34.068359 C 31.976125 34.068359 34.204078 32.904344 34.080078 30.027344 C 34.058078 29.520344 33.773937 29.055391 33.335938 28.775391 C 32.836937 28.455391 32.061734 27.959453 31.052734 27.314453 C 30.131734 26.726453 28.943422 26.684938 27.982422 27.210938 L 27.107422 27.583984 C 26.652422 27.903984 26.069641 27.967906 25.556641 27.753906 C 24.757641 27.419906 23.529906 26.772094 22.378906 25.621094 C 21.227906 24.470094 20.580094 23.242359 20.246094 22.443359 C 20.031094 21.930359 20.096016 21.347578 20.416016 20.892578 L 20.789062 20.017578 C 21.315062 19.057578 21.274547 17.868266 20.685547 16.947266 C 20.039547 15.937266 19.543609 15.163063 19.224609 14.664062 C 18.943609 14.226062 18.478656 13.941922 17.972656 13.919922 z"></path></svg></a>
+            <a href="mailto:idanurag567@gmail.com" target="blank"> 
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 32 32"><path d="M29 4H3a3 3 0 0 0-3 3v18a3 3 0 0 0 3 3h26a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-.72 2L16 14.77 3.72 6zM2 24.59V7.23l10.12 7.23zM3.41 26l10.36-10.36 1.64 1.17a1 1 0 0 0 1.16 0l1.64-1.17L28.59 26zM30 24.59 19.88 14.46 30 7.23z" data-name="2-Email"/></svg></a>
+            <a href="https://www.twitter.com" target="blank">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="60" height="60" viewBox="0 0 50 50" >
+                <path d="M 11 4 C 7.134 4 4 7.134 4 11 L 4 39 C 4 42.866 7.134 46 11 46 L 39 46 C 42.866 46 46 42.866 46 39 L 46 11 C 46 7.134 42.866 4 39 4 L 11 4 z M 13.085938 13 L 21.023438 13 L 26.660156 21.009766 L 33.5 13 L 36 13 L 27.789062 22.613281 L 37.914062 37 L 29.978516 37 L 23.4375 27.707031 L 15.5 37 L 13 37 L 22.308594 26.103516 L 13.085938 13 z M 16.914062 15 L 31.021484 35 L 34.085938 35 L 19.978516 15 L 16.914062 15 z" ></path> </svg> </a>
+    
+        ul.nav-list
+            li.nav-ele
+                <a href="/"><ion-icon name="home-outline"></ion-icon>Home</a>
+                li.nav-ele 
+                    <div class="dropdown">
+                    <button class="dropbtn">About Us
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/about-pib-media-analyzer" target="blank">About PIB Media analyzer</a>
+                        <a href="/pib-main-functions" target="blank">Main Functions</a>
+                        <a href="/pib-organizational-setup" target="blank">Organizational Setup</a>
+                    </div>
+                    </div>
+            li.nav-ele
+                a(href="#" target="blank") Departments Info
+            li.nav-ele
+                a(href="#" target="blank") Selected Media
+            li.nav-ele
+                <div class="dropdown">
+                    <button class="dropbtn">Archives
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#"target="blank">About Archives</a>
+                        <a href="#"target="blank">2022</a>
+                        <a href="#"target="blank">2021</a>
+                    </div>
+                    </div>
+            if user
+                a.nav-ele.nav__el--logout.login-button Log out
+                a.nav__el.nav-ele(href='/me')
+                    img.nav__user-img(src=`/images/user.png` style="height:2.5rem;transform:scale(2)" )
+                    span= user.name.split(' ')[0]
+            else 
+                li.nav-ele.login-button
+                    a(href="/login") LOGIN
