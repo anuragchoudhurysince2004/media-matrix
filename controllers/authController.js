@@ -17,6 +17,12 @@ exports.register = async (req, res) => {
       department,
     });
     const token = signToken(data._id);
+    res.cookie("jwt", token, {
+      expiresIn: new Date(
+        Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+      ),
+      httpOnly: true,
+    });
     res.status(200).json({
       status: "success",
       message: "registration successful",
