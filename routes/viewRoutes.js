@@ -12,8 +12,14 @@ router.get("/profile", authController.protect, viewController.showProfile);
 router.get("/about-pib-media-analyzer", viewController.getAboutPibMediaAnal);
 router.get("/pib-main-functions", viewController.getPibMainFunctions);
 router.get(
-    "/pib-organizational-setup",
-    viewController.getPibOrganizationalSetup
+  "/pib-organizational-setup",
+  viewController.getPibOrganizationalSetup
+);
+
+router.get(
+  "/register",
+  authController.isLoggedIn,
+  viewController.showRegisterForm
 );
 //setting view routes
 // app.get("/", (req, res) => {

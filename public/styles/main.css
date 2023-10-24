@@ -87,14 +87,28 @@ body {
   width: 30px;
   transform: translateY(2px);
 }
+.button {
+  padding: 1rem 2rem;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  margin-right: 0.8rem;
+  font-weight: 800;
+}
+.button:hover {
+  background-color: #333;
+}
 
 .login-button {
   /* background-color: ; */
   border-radius: 15px;
-  padding: 3px 6px;
+  /* padding: 3px 6px; */
+  margin-bottom: 5px;
 }
 .login-button a {
   font-size: 2.8rem;
+  color: white;
 }
 /* copied  */
 /* Navbar container */
@@ -496,4 +510,134 @@ body {
   margin: auto;
   padding: 20px;
   margin-left: 30px;
+}
+
+/* ///////////////////////////////////////////// */
+/* register user css */
+/* ///////////////////////////////////////////// */
+.body-container {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  gap: 5rem;
+  flex-direction: column;
+}
+.register-heading {
+  display: block;
+}
+
+.registration-container {
+  width: 50rem;
+  color: #ffe066;
+  background-color: #222629;
+  /* border: 1px solid #ccc; */
+  border-radius: 8px;
+  padding: 2rem;
+  font-size: 2.4rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.registration-heading {
+  color: #86c232;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.form-group-register {
+  margin-bottom: 15px;
+}
+
+.label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.registration-input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #222;
+  border-radius: 5px;
+  background-color: #222;
+  color: white;
+}
+
+.registration-button {
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.registration-button:hover {
+  background-color: #45a049;
+}
+
+/* /////////////////////////////////////////// */
+/* CSS FOR PROFILE PAGE */
+/* /////////////////////////////////////////// */
+.saved-pass-heading {
+  color: #86c232;
+  text-align: center;
+  font-size: 5rem;
+  padding-bottom: 6rem;
+}
+.saved-pass-box {
+  padding: 2rem 15rem;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 0.3fr;
+}
+.website-column-heading {
+  font-size: 5.2rem;
+  /* padding: 0rem 15rem; */
+  color: #ffe066;
+}
+
+.savePass {
+  display: block;
+  border-radius: 15rem;
+  background-color: #04aa6d;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  font-family: "Nunito", sans-serif;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.password-associate {
+  font-size: 3.2rem;
+}
+.password-associate #username,
+#website {
+  border-radius: 8px;
+  font-size: 2rem;
+  height: 3.2rem;
+  width: 35rem;
+}
+
+.confirmSavePass {
+  font-family: "VT323", sans-serif;
+  background-color: #ffe066;
+  color: black;
+  padding: 1rem 2rem;
+  font-size: 4.2rem;
+  font-weight: 800;
+  border-radius: 15px;
+}
+
+.optional-text {
+  font-size: 2.4rem;
+  padding: 0rem 2rem;
+  display: inline-block;
+  color: #ffe066;
 }
