@@ -1,12 +1,31 @@
 const db = require("./../utils/dbclient");
+const websites = [
+  { name: "Sports", url: "https://indianexpress.com/section/sports/" },
+  {
+    name: "Political Pulse",
+    url: "https://indianexpress.com/section/political-pulse/",
+  },
+  {
+    name: "Lifestyle",
+    url: "https://indianexpress.com/section/lifestyle/",
+  },
+  {
+    name: "Entertainment",
+    url: "https://indianexpress.com/section/entertainment/",
+  },
+  { name: "Business", url: "https://indianexpress.com/section/business/" },
+  { name: "India", url: "https://indianexpress.com/section/india/" },
+];
 exports.getOverview = async (req, res) => {
   try {
+    res;
     await db.client.connect();
-    const database = db.client.db("PIB");
+    const database = db.client.db("MM");
     const collection = database.collection("news");
     const articles = await collection.find({}).toArray();
     res.status(200).render("index.pug", {
-      articles,
+      articles: articles,
+      websites,
     });
 
     //we would need to await the query for getting news from the database
@@ -30,8 +49,9 @@ exports.getLoginForm = async (req, res) => {
 
 exports.showProfile = async (req, res) => {
   try {
+    console.log(req.user);
     await db.client.connect();
-    const database = db.client.db("PIB");
+    const database = db.client.db("MM");
     const collection = database.collection("news");
     let positiveNews;
     let negativeNews;
@@ -43,18 +63,25 @@ exports.showProfile = async (req, res) => {
 
       negativeNews = await collection.find({ sentiment: "-1" }).toArray();
     } else {
-      positiveNews = await collection
-        .find({ sentiment: "1", department: req.user.department })
-        .toArray();
-      neutralNews = await collection
-        .find({ sentiment: "0", department: req.user.department })
-        .toArray();
+      positiveNews = await collection.find({ sentiment: 1 }).toArray();
+      neutralNews = await collection.find({ sentiment: 0 }).toArray();
 
-      negativeNews = await collection
-        .find({ sentiment: "-1", department: req.user.department })
-        .toArray();
+      negativeNews = await collection.find({ sentiment: -1 }).toArray();
     }
+    // } else {
+    //   positiveNews = await collection
+    //     .find({ sentiment: 1, department: req.user.department })
+    //     .toArray();
+    //   neutralNews = await collection
+    //     .find({ sentiment: 0, department: req.user.department })
+    //     .toArray();
+
+    //   negativeNews = await collection
+    //     .find({ sentiment: -1, department: req.user.department })
+    //     .toArray();
+    // }
     await res.status(200).render("profile.pug", {
+      websites,
       positiveNews,
       neutralNews,
       negativeNews,
@@ -62,6 +89,7 @@ exports.showProfile = async (req, res) => {
   } catch (err) {
     //the catch block is not working currently
     res.status(500).send("something went very wrong");
+    console.log(err);
   }
 };
 

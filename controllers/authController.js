@@ -9,12 +9,11 @@ const signToken = (id) => {
 //register a new user
 exports.register = async (req, res) => {
   try {
-    const { email, password, name, department } = req.body;
+    const { email, password, name } = req.body;
     const data = await User.create({
       email: email,
       password: password,
       name,
-      department,
     });
     const token = signToken(data._id);
     res.cookie("jwt", token, {
@@ -54,6 +53,7 @@ exports.login = async (req, res) => {
       ),
       httpOnly: true,
     });
+    console.log(res.cookie);
     res.status(200).json({ status: "success", token });
   } catch (err) {
     res.status(400).json({

@@ -422,9 +422,30 @@ body {
   list-style-type: none;
   padding: 3rem;
 }
-.news-item:hover {
+/* .news-item:hover {
   transform: scale(1.05);
   background-color: rgb(144, 228, 176);
+} */
+.positive {
+  background-color: rgb(207, 247, 207);
+}
+.negative {
+  background-color: rgb(247, 201, 201);
+}
+.neutral {
+  background-color: rgb(174, 230, 243);
+}
+.positive:hover {
+  transform: scale(1.05);
+  background-color: #d3f9d8;
+}
+.negative:hover {
+  transform: scale(1.05);
+  background-color: #ffe3e3;
+}
+.neutral:hover {
+  transform: scale(1.05);
+  background-color: #58c9e8;
 }
 .news-item {
   /* border: px solid black; */
@@ -640,4 +661,40 @@ body {
   padding: 0rem 2rem;
   display: inline-block;
   color: #ffe066;
+}
+
+/* Style the select element */
+select {
+  margin-top: 14px;
+  padding: 10px;
+  font-size: 22px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Style the options within the select dropdown */
+option {
+  padding: 5px;
+  font-size: 20px;
+  background-color: #f9f9f9;
+}
+
+/* Style the select dropdown when it's open */
+select:focus {
+  outline: none;
+  border-color: #007bff; /* Example color */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Example shadow */
+}
+
+/* Style the select dropdown arrow */
+select::-ms-expand {
+  display: none;
+}
+select::after {
+  content: "\25BC"; /* Unicode character for down arrow */
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
 }

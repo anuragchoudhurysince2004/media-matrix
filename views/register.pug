@@ -7,20 +7,12 @@ block content
       h2.registration-heading Register a New User
       form.registration-form(action="/register", method="post")
         .form-group-register
-          label(for="username") Username
-          input.registration-input(type="text", id="username", name="username", placeholder="Enter your username", required)
-        
-        .form-group-register
           label(for="email") Email
           input.registration-input(type="email", id="email", name="email", placeholder="Enter your email", required)
         
         .form-group-register
           label(for="name") Name
           input.registration-input(type="text", id="name", name="name", placeholder="Enter your Name", required)
-        p.registration-heading currently supported departments are Technology Agriculture and Finance
-        .form-group-register
-          label(for="department") Department
-          input.registration-input(type="text", id="department", name="department", placeholder="Enter your Department", required)
         
         .form-group-register
           label(for="password") Password

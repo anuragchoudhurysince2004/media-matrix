@@ -12,9 +12,55 @@ block content
   .dashboard-container
     p.primary-heading Live-News:Dashboard
     p.tertiary-heading Real-Time Media Monitoring: Stay Informed, Stay Ahead
+
+    select(name='category' onchange=`filterArticles(this.value, ${JSON.stringify(articles)})`)
+      each website in websites
+        option(value=website.name)= website.name    
     ul.news-list
       each article in articles
-        li.news-item
-          h2.news-title= article.title
-          p.news-content= article.content
-          a.news-link(href=`${article.website_link}` target='blank') Read More
+        li.news-item(class=getSentimentClass(article.sentiment))
+          h2.news-title= article.headline
+          p.news-content= article.description
+          a.news-link(href=`${article.url}` target='blank') Read More
+
+  script.
+    function getSentimentClass(sentiment) {
+      if (sentiment === 1) {
+        return "positive";
+      } else if (sentiment === -1) {
+        return "negative";
+      } else {
+        return "neutral";
+      }
+    }
+    function filterArticles(category, articles) {
+      selectedCategory = category;
+      const newsList = document.querySelector('.news-list');
+      newsList.innerHTML = ''; // Clear existing articles
+      articles.forEach(article => {
+        if (selectedCategory === 'All' || article.department === selectedCategory) {
+          const li = document.createElement('li');
+          li.classList.add('news-item');
+          li.classList.add(getSentimentClass(article.sentiment));
+
+          const h2 = document.createElement('h2');
+          h2.classList.add('news-title');
+          h2.textContent = article.headline;
+
+          const p = document.createElement('p');
+          p.classList.add('news-content');
+          p.textContent = article.description;
+
+          const a = document.createElement('a');
+          a.classList.add('news-link');
+          a.setAttribute('href', article.url);
+          a.setAttribute('target', '_blank');
+          a.textContent = 'Read More';
+
+          li.appendChild(h2);
+          li.appendChild(p);
+          li.appendChild(a);
+          newsList.appendChild(li);
+        }
+      });
+    }

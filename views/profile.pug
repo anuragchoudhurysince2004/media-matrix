@@ -1,33 +1,125 @@
 extends base
+
 block content
   .profile-container
     .proin-header
       h1.primary-heading User Login
-      h2.secondary-heading= `Department: ${user.department}`
     
+    select(name='category' onchange=`filterNews(this.value, ${JSON.stringify({ positiveNews, neutralNews, negativeNews })})`)
+      each website in websites
+        option(value=website.name)= website.name
+
     .news-columns
       .positive-news-column
         h3 Favorable News:
-        ul.news-list
+        ul.news-list#positive-news-list
           each article in positiveNews
             li.news-item.positive-news
-              h2.news-title= article.title
-              p.news-content= article.content
-              a.news-link(href=article.website_link target="blank") Read More
+              h2.news-title= article.headline
+              p.news-content= article.description
+              a.news-link(href=article.url target="blank") Read More
       .neutral-news-column
         h3 Neutral News:
-        ul.news-list
+        ul.news-list#neutral-news-list
           each article in neutralNews
             li.news-item.neutral-news
-              h2.news-title= article.title
-              p.news-content= article.content
-              a.news-link(href=article.website_link target="blank") Read More
+              h2.news-title= article.headline
+              p.news-content= article.description
+              a.news-link(href=article.url target="blank") Read More
 
       .negative-news-column
         h3 Non Favorable News:
-        ul.news-list
+        ul.news-list#negative-news-list
           each article in negativeNews
             li.news-item.negative-news
-              h2.news-title= article.title
-              p.news-content= article.content
-              a.news-link(href=article.website_link target="blank") Read More
+              h2.news-title= article.headline
+              p.news-content= article.description
+              a.news-link(href=article.url target="blank") Read More
+
+  script.
+    function getSentimentClass(sentiment) {
+      if (sentiment === 1) {
+        return "positive";
+      } else if (sentiment === -1) {
+        return "negative";
+      } else {
+        return "neutral";
+      }
+    }
+    function filterNews(category, { positiveNews, neutralNews, negativeNews }) {
+      const selectedCategory = category;
+      const positiveNewsList = document.querySelector('#positive-news-list');
+      const neutralNewsList = document.querySelector('#neutral-news-list');
+      const negativeNewsList = document.querySelector('#negative-news-list');
+      
+      positiveNewsList.innerHTML = ''; // Clear existing articles
+      neutralNewsList.innerHTML = ''; // Clear existing articles
+      negativeNewsList.innerHTML = ''; // Clear existing articles
+
+      switch (selectedCategory) {
+        case 'Sports':
+          positiveNews.filter(article => article.department === 'Sports').forEach(article => appendNews(positiveNewsList, article));
+          neutralNews.filter(article => article.department === 'Sports').forEach(article => appendNews(neutralNewsList, article));
+          negativeNews.filter(article => article.department === 'Sports').forEach(article => appendNews(negativeNewsList, article));
+          break;
+        case 'Political Pulse':
+          positiveNews.filter(article => article.department === 'Political Pulse').forEach(article => appendNews(positiveNewsList, article));
+          neutralNews.filter(article => article.department === 'Political Pulse').forEach(article => appendNews(neutralNewsList, article));
+          negativeNews.filter(article => article.department === 'Political Pulse').forEach(article => appendNews(negativeNewsList, article));
+          break;
+        case 'Lifestyle':
+          positiveNews.filter(article => article.department === 'Lifestyle').forEach(article => appendNews(positiveNewsList, article));
+          neutralNews.filter(article => article.department === 'Lifestyle').forEach(article => appendNews(neutralNewsList, article));
+          negativeNews.filter(article => article.department === 'Lifestyle').forEach(article => appendNews(negativeNewsList, article));
+          break;
+        case 'Entertainment':
+          positiveNews.filter(article => article.department === 'Entertainment').forEach(article => appendNews(positiveNewsList, article));
+          neutralNews.filter(article => article.department === 'Entertainment').forEach(article => appendNews(neutralNewsList, article));
+          negativeNews.filter(article => article.department === 'Entertainment').forEach(article => appendNews(negativeNewsList, article));
+          break;
+        case 'Business':
+          positiveNews.filter(article => article.department === 'Business').forEach(article => appendNews(positiveNewsList, article));
+          neutralNews.filter(article => article.department === 'Business').forEach(article => appendNews(neutralNewsList, article));
+          negativeNews.filter(article => article.department === 'Business').forEach(article => appendNews(negativeNewsList, article));
+          break;
+        case 'India':
+          positiveNews.filter(article => article.department === 'India').forEach(article => appendNews(positiveNewsList, article));
+          neutralNews.filter(article => article.department === 'India').forEach(article => appendNews(neutralNewsList, article));
+          negativeNews.filter(article => article.department === 'India').forEach(article => appendNews(negativeNewsList, article));
+          break;
+        default:
+          // Show all news
+          positiveNews.forEach(article => appendNews(positiveNewsList, article));
+          neutralNews.forEach(article => appendNews(neutralNewsList, article));
+          negativeNews.forEach(article => appendNews(negativeNewsList, article));
+          break;
+      }
+    }
+
+
+    function appendNews(newsList, article) {
+      const li = document.createElement('li');
+      li.classList.add('news-item');
+      li.classList.add(`${getSentimentClass(article.sentiment)}-news`); // Assuming you have CSS classes for each sentiment
+
+      const h2 = document.createElement('h2');
+      h2.classList.add('news-title');
+      h2.textContent = article.headline;
+
+      const p = document.createElement('p');
+      p.classList.add('news-content');
+      p.textContent = article.description;
+
+      const a = document.createElement('a');
+      a.classList.add('news-link');
+      a.setAttribute('href', article.url);
+      a.setAttribute('target', '_blank');
+      a.textContent = 'Read More';
+
+      li.appendChild(h2);
+      li.appendChild(p);
+      li.appendChild(a);
+      newsList.appendChild(li);
+    }
+
+    // Define getSentimentClass function here
